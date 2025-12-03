@@ -1,393 +1,601 @@
-# 1. Find the largest of three numbers
-num1 = int(input("Halnu hos first number: "))
-num2 = int(input("Halnu hos second number: "))
-num3 = int(input("Halnu hos third number: "))
+#1. Take 3 numbers and print the largest number
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
 
-max_num = num1
-if num2 > max_num:
-    max_num = num2
-if num3 > max_num:
-    max_num = num3
+largest = a
+if b > largest:
+    largest = b
+if c > largest:
+    largest = c
 
-print("Largest number is:", max_num)
+print("The largest number is:", largest)
 
 
-# 2. Month number to month name
-month_input = int(input("Month ko number halnu hos (1-12): "))
+#2. Take a month number and print the month name
+month = int(input("Enter month number (1-12): "))
 
-if month_input == 1:
+if month == 1:
     print("January")
-elif month_input == 2:
+elif month == 2:
     print("February")
-elif month_input == 3:
+elif month == 3:
     print("March")
-elif month_input == 4:
+elif month == 4:
     print("April")
-elif month_input == 5:
+elif month == 5:
     print("May")
-elif month_input == 6:
+elif month == 6:
     print("June")
-elif month_input == 7:
+elif month == 7:
     print("July")
-elif month_input == 8:
+elif month == 8:
     print("August")
-elif month_input == 9:
+elif month == 9:
     print("September")
-elif month_input == 10:
+elif month == 10:
     print("October")
-elif month_input == 11:
+elif month == 11:
     print("November")
-elif month_input == 12:
+elif month == 12:
     print("December")
 else:
     print("Invalid month number")
+    
 
+#3.Write a program to swap two variables  
+    
+x = input("Enter first value: ")
+y = input("Enter second value: ")
+print("Before swapping: x =", x, "y =", y)
+x, y = y, x
+print("After swapping: x =", x, "y =", y)
+    
 
-# 3. Swap two values
-val1 = input("Enter first value: ")
-val2 = input("Enter second value: ")
-print("Before swap: val1 =", val1, "val2 =", val2)
-temp = val1
-val1 = val2
-val2 = temp
-print("After swap: val1 =", val1, "val2 =", val2)
+#   4. You are developing a simple ticket booking system for a movie theatre. The ticket
+# price depends on the age of the person and whether they have a membership card. If
+# the person is under 12, the ticket is free. If the person is between 12 and 60: if they
+# have a membership card, the ticket costs Rs. 150. If not, the ticket costs Rs 200. If the
+# person is above 60, they get a senior citizen discount, and then ticket costs Rs 100.
+# Write a python program using nested if-else to calculate and print the ticket price
+# based on the users age and membership status.   
 
+age = int(input("Enter your age: "))
+has_membership = input("Do you have a membership card? (yes/no): ").lower()
 
-# 4. Movie ticket system
-age_person = int(input("Tapaiko age halnu hos: "))
-member_card = input("Membership cha? (yes/no): ").lower()
-
-if age_person < 12:
-    print("Ticket free")  # child free
-elif 12 <= age_person <= 60:
-    if member_card == "yes":
-        print("Ticket cost: Rs 150")
+if age < 12:
+    print("Ticket is Free")  # or print(0)
+elif 12 <= age <= 60:
+    if has_membership == "yes":
+        print("Ticket price is Rs. 150")
     else:
-        print("Ticket cost: Rs 200")
+        print("Ticket price is Rs. 200")
 else:
-    print("Ticket cost: Rs 100")  # senior citizen
+    print("Ticket price is Rs. 100")
 
 
-# 5. Electricity billing
-units = int(input("Enter electricity usage (units): "))
+# 5. A utility company charges different rates based on electricity usage:
+# If usage < 100 units then cost Rs 5 per unit
+# If usage is between 100 to 300 units:
+# First 100 units: Rs 5
+#  Next units: Rs 8
+# If usage is > 300 units:
+#  First 100: Rs 5
+#  Next 200: Rs 8
+#  Remaining: Rs 10
 
-if units < 100:
-    cost = units * 5
-elif units <= 300:
-    cost = 100 * 5 + (units - 100) * 8
+usage = int(input("Enter electricity usage in units: "))
+
+if usage < 100:
+    print("Total cost: Rs", usage * 5)
+elif usage <= 300:
+    first_100 = 100 * 5
+    remaining = usage - 100
+    print("Total cost: Rs", first_100 + remaining * 8)
 else:
-    cost = 100 * 5 + 200 * 8 + (units - 300) * 10
+    first_100 = 100 * 5
+    next_200 = 200 * 8
+    remaining = usage - 300
+    print("Total cost: Rs", first_100 + next_200 + remaining * 10)
+    
+# 6. Write a complete Python program that:
+#  Asks Player 1 to enter their move ( input: rock, paper, or scissors)
+#  Asks Player 2 to enter their move ( input: rock, paper, or scissors)
+#  Uses only nested if and else statements
+#  Prints who wins or if it's a tie
 
-print("Total electricity bill: Rs", cost)
+p1 = input("Player 1 move (rock/paper/scissors): ").lower()
+p2 = input("Player 2 move (rock/paper/scissors): ").lower()
 
-
-# 6. Rock, Paper, Scissors
-player1 = input("Player1 move: rock/paper/scissors ").lower()
-player2 = input("Player2 move: rock/paper/scissors ").lower()
-
-if player1 == player2:
-    print("Match Tie")
-elif (player1 == "rock" and player2 == "scissors") or \
-     (player1 == "paper" and player2 == "rock") or \
-     (player1 == "scissors" and player2 == "paper"):
-    print("Player1 Wins")
+if p1 == p2:
+    print("It's a tie")
+elif p1 == "rock" and p2 == "scissors":
+    print("Player 1 wins")
+elif p1 == "paper" and p2 == "rock":
+    print("Player 1 wins")
+elif p1 == "scissors" and p2 == "paper":
+    print("Player 1 wins")
 else:
-    print("Player2 Wins")
+    print("Player 2 wins")
+    
+
+#  7. A school decided to replace the desks in three classrooms. Each desk sits two
+# students. Given the number of students in each class, print the smallest possible
+# number of desks that can be purchased. The program should read three integers: the
+# number of students in each of the three classes, a, b and c respectively.
+# Hint: In the first test there are three groups. The first group has 20 students and thus
+# needs 10 desks. The second group has 21 students, so they can get by with no fewer
+# than 11 desks. 11 desks are also enough for the third group of 22 students. So, we
+# need 32 desks in total.   
+
+# Class haru ma student ko number halne
+a = int(input("Class 1 ma students kati cha?: "))
+b = int(input("Class 2 ma students kati cha?: "))
+c = int(input("Class 3 ma students kati cha?: "))
+
+# Harek class ka lagi desk haru calculate garne
+# 2 ma divide garera odd cha vane 1 add garera round up garne
+desks_a = (a + 1) // 2  # class 1 ko desk
+desks_b = (b + 1) // 2  # class 2 ko desk
+desks_c = (c + 1) // 2  # class 3 ko desk
+
+# Sabai desks add garera total
+total_desks = desks_a + desks_b + desks_c
+
+# Result yoo
+print("Minimum desks needed:", total_desks)
 
 
-# 7. Minimum desks needed
-stu1 = int(input("Class1 students kati cha?: "))
-stu2 = int(input("Class2 students kati cha?: "))
-stu3 = int(input("Class3 students kati cha?: "))
+# 8. In a smart building lift system, the lift is currently at floor 5. A person presses
+# floor 3. Write a program to decide and display whether the lift should go up, go
+# down, or stay at current floor.
 
-desk1 = (stu1 + 1) // 2
-desk2 = (stu2 + 1) // 2
-desk3 = (stu3 + 1) // 2
+# Lift ahile kati floor ma cha bhanera
+current_floor = 5
 
-total_desk = desk1 + desk2 + desk3
-print("Minimum desks required:", total_desk)
+# User le kun floor press garxa bhanera input
+pressed_floor = int(input("Tapaiko kun floor chahiyo?: "))
 
-
-# 8. Lift system
-lift_floor = 5
-user_floor = int(input("Kun floor chahiyo?: "))
-
-if user_floor > lift_floor:
-    print("Lift is going up")
-elif user_floor < lift_floor:
-    print("Lift is going down")
+# Lift k garne decide garnu
+if pressed_floor > current_floor:
+    print("Lift upar janey cha")  # Up janey
+elif pressed_floor < current_floor:
+    print("Lift tala janey cha")  # Down janey
 else:
-    print("Lift already yahi floor ma cha")
+    print("Lift ahile yo floor ma cha")  # Already yahi cha
 
 
-# 9. Positive and Even/Odd check
-number = int(input("Enter a number: "))
+# 9. Write a Python program that takes a number as input, first checks if it is positive
+# if yes then check whether it is even or odd
 
-if number > 0:
-    print("Number is positive")
-    if number % 2 == 0:
-        print("Number is even")
+num = int(input("Enter a number: "))
+
+# Check positive ho ki hoina
+if num > 0:
+    # Number positive bhaye
+    if num % 2 == 0:
+        print("The number is even")   # even ho ki hoina check garne
     else:
-        print("Number is odd")
+        print("The number is odd")    # odd ho bhane
 else:
-    print("Number is not positive")
+    print("The number is not positive")   # positive chaina bhane
+    
 
+# 10. Take two numbers and find the greater of the two. If they are equal, check if the
+# number is positive, negative, or zero.    
 
-# 10. Greater number or positive/negative/zero check
-n1 = int(input("Enter number1: "))
-n2 = int(input("Enter number2: "))
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
 
-if n1 > n2:
-    print("Greater number is", n1)
-elif n2 > n1:
-    print("Greater number is", n2)
+# Compare garne
+if num1 > num2:
+    print("The greater number is", num1)   # num1 greater bhaye p
+elif num2 > num1:
+    print("The greater number is", num2)   # num2 greater bhaye p
 else:
-    print("Numbers are equal")
-    if n1 > 0:
-        print("Number is positive")
-    elif n1 < 0:
-        print("Number is negative")
+    # Duita number equal cha bhane
+    print("Both numbers are equal")
+    if num1 > 0:
+        print("The number is positive")   # positive check
+    elif num1 < 0:
+        print("The number is negative")   # negative check
     else:
-        print("Number is zero")
+        print("The number is zero")       # zero bhaye
+        
 
+# 11. Accept input from user If given number is a multiple of both 3 and 5 prints "Fizz
+# Buzz" instead of number If given number is a multiple of 3 but not 5 prints "Fizz"
+# instead of number If given number is a multiple of 5 but not 3 prints "Buzz"instead
+# of number If given number is not multiple of 3 or 5 prints value as usual.
+  
+num = int(input("Enter a number: "))
 
-# 11. FizzBuzz
-num_input = int(input("Enter number: "))
+# Check multiple of 3 and 5
+ if num % 3 == 0 and num % 5 == 0:
+    print("FizzBuzz")   # 3 ra 5 le divide garxa bhane
+ elif num % 3 == 0:
+    print("Fizz")       # 3 le divide garxa bhane
+ elif num % 5 == 0:
+    print("Buzz")       # 5 le divide garxa bhane
+ else:
+    print(num)          # Kunai ni divide gardaina bhane number print garne      
+    
 
-if num_input % 3 == 0 and num_input % 5 == 0:
-    print("FizzBuzz")
-elif num_input % 3 == 0:
-    print("Fizz")
-elif num_input % 5 == 0:
-    print("Buzz")
-else:
-    print(num_input)
+# 12. Snapple is a famous tea drink brand from Queens, New York. Each bottle cap
+# comes with a silly fun fact.
+# Use the random module to create a number from 0 to 5. Then use
+# an if/elif/else statement to print out one of these six random Snapple facts:
+# 0 - 'Flamingos turn pink from eating shrimp.'
+# 1 - 'The only food that doesn't spoil is honey.'
+# 2 - 'Shrimp can only swim backwards.'
+# 3 - 'A taste bud's life span is about 10 days.'
+# 4 - 'It is impossible to sneeze while sleeping.'
+# 5 - 'It is illegal to sing off-key in North Carolina.'
 
+import random  # random module import garne
 
-# 12. Random Snapple facts
-import random
-rand_num = random.randint(0, 5)
+# Random number 0 dekhi 5 samma generate garxa
+num = random.randint(0, 5)
 
-if rand_num == 0:
+# Check number ra corresponding Snapple fact print garxa
+if num == 0:
     print("Flamingos turn pink from eating shrimp.")
-elif rand_num == 1:
-    print("Honey never spoils.")
-elif rand_num == 2:
-    print("Shrimp can swim only backwards.")
-elif rand_num == 3:
-    print("Taste bud lives about 10 days.")
-elif rand_num == 4:
-    print("Cannot sneeze while sleeping.")
+elif num == 1:
+    print("The only food that doesn't spoil is honey.")
+elif num == 2:
+    print("Shrimp can only swim backwards.")
+elif num == 3:
+    print("A taste bud's life span is about 10 days.")
+elif num == 4:
+    print("It is impossible to sneeze while sleeping.")
 else:
-    print("Singing off-key illegal in North Carolina.")
+    print("It is illegal to sing off-key in North Carolina.")
+    
 
+# 13. A store gives a 20% discount if the total purchase is above RS 1000 AND the
+# customer is a member, or a 10% discount if the purchase is above RS 1000 but the
+# customer is not a member. Write a program that takes total_amount and
+# is_member (True/False) as input and prints the final amount after applying the
+# correct discount (or no discount).
+    
+# User le total purchase amount halne
+total_amount = float(input("Enter total purchase amount: "))
 
-# 13. Store discount
-purchase = float(input("Enter total purchase amount: "))
-member = input("Are you member? (True/False): ").title() == "True"
+# User le member ho ki hoina halne (True/False)
+is_member = input("Are you a member? (True/False): ").title() == "True"
 
-if purchase > 1000 and member:
-    final = purchase * 0.8
-elif purchase > 1000 and not member:
-    final = purchase * 0.9
+# Check discount
+if total_amount > 1000 and is_member:
+    # Purchase >1000 ra member ho bhane 20% discount
+    final_amount = total_amount * 0.8
+elif total_amount > 1000 and not is_member:
+    # Purchase >1000 ra member hoina bhane 10% discount
+    final_amount = total_amount * 0.9
 else:
-    final = purchase
+    # Discount lagdaina
+    final_amount = total_amount
 
-print("Final amount to pay: Rs", final)
+# Print final amount
+print("Final amount to pay:", final_amount)
 
 
-# 14. Weight on planets
-earth_wt = float(input("Earth weight kg: "))
-planet_num = int(input("Planet number 1-7: "))
+#14: Weight conversion to other planet
 
-if planet_num == 1:
-    wt = earth_wt * 0.38
-elif planet_num == 2:
-    wt = earth_wt * 0.91
-elif planet_num == 3:
-    wt = earth_wt * 0.38
-elif planet_num == 4:
-    wt = earth_wt * 2.53
-elif planet_num == 5:
-    wt = earth_wt * 1.07
-elif planet_num == 6:
-    wt = earth_wt * 0.89
-elif planet_num == 7:
-    wt = earth_wt * 1.14
+# User le Earth weight halne
+earth_weight = float(input("Enter your Earth weight (kg): "))
+
+# User le planet number halne
+planet = int(input("Enter planet number (1-7): "))
+
+# Calculate weight based on planet
+if planet == 1:
+    weight = earth_weight * 0.38   # Mercury
+elif planet == 2:
+    weight = earth_weight * 0.91   # Venus
+elif planet == 3:
+    weight = earth_weight * 0.38   # Mars
+elif planet == 4:
+    weight = earth_weight * 2.53   # Jupiter
+elif planet == 5:
+    weight = earth_weight * 1.07   # Saturn
+elif planet == 6:
+    weight = earth_weight * 0.89   # Uranus
+elif planet == 7:
+    weight = earth_weight * 1.14   # Neptune
 else:
-    wt = None
+    weight = None                   # Invalid planet
 
-if wt is not None:
-    print("Your weight on planet", planet_num, "is:", wt)
+# Print result
+if weight is not None:
+    print("Your weight on planet", planet, "is:", weight)
 else:
     print("Invalid planet number")
+     
 
+#15. WAP which accepts marks of four subjects and display total marks, percentage and
+# grade. Hint: more than 70 –> distinction, more than 60 –> first, more than 40 –>
+# pass, less than 40 –> fail  
 
-# 15. Marks, percentage, grade
-m1 = float(input("Subject1 marks: "))
-m2 = float(input("Subject2 marks: "))
-m3 = float(input("Subject3 marks: "))
-m4 = float(input("Subject4 marks: "))
+  
+# User le char subject ko marks halne
+sub1 = float(input("Enter marks for subject 1: "))
+sub2 = float(input("Enter marks for subject 2: "))
+sub3 = float(input("Enter marks for subject 3: "))
+sub4 = float(input("Enter marks for subject 4: "))
 
-total_marks = m1 + m2 + m3 + m4
-perc = (total_marks / 400) * 100
+# Total marks calculate garnu
+total = sub1 + sub2 + sub3 + sub4
 
-if perc > 70:
-    grd = "Distinction"
-elif perc > 60:
-    grd = "First"
-elif perc > 40:
-    grd = "Pass"
+# Percentage calculate garnu (assuming each subject max 100)
+percentage = (total / 400) * 100
+
+# Grade determine garnu
+if percentage > 70:
+    grade = "Distinction"
+elif percentage > 60:
+    grade = "First"
+elif percentage > 40:
+    grade = "Pass"
 else:
-    grd = "Fail"
+    grade = "Fail"
 
-print("Total:", total_marks, "Percentage:", perc, "Grade:", grd)
+# Print results
+print("Total marks:", total)
+print("Percentage:", percentage)
+print("Grade:", grade)  
 
+# 16. Write a program to accept the cost price of a bike and display the road tax to be
+# paid according to the following criteria:
+# Cost price (in Rs) Tax
+# >100000 15%
+# >50000 and <=100000 10%
+# <=50000 5%
 
-# 16. Bike road tax
-bike_price = float(input("Bike cost (Rs): "))
+# User le bike ko cost price halne
+cost_price = float(input("Enter the cost price of the bike (Rs): "))
 
-if bike_price > 100000:
-    tax = bike_price * 0.15
-elif bike_price > 50000:
-    tax = bike_price * 0.1
+# Road tax calculate garnu
+if cost_price > 100000:
+    tax = cost_price * 0.15   # 15% tax
+elif cost_price > 50000:
+    tax = cost_price * 0.10   # 10% tax
 else:
-    tax = bike_price * 0.05
+    tax = cost_price * 0.05   # 5% tax
 
-print("Road tax Rs", tax)
+# Print result
+print("Road tax to be paid: Rs", tax)
 
 
-# 17. Employee bonus
-yrs = float(input("Years of service: "))
+# 17. A company decided to give bonus to employee according to following criteria:
+# Time period of service Bonus
+# More than 10 years 10%
+# >=6 and <=10 8%
+# Less than 6 years 5%
 
-if yrs > 10:
-    bonus_percent = 10
-elif yrs >= 6:
-    bonus_percent = 8
+# User le service period halne (years)
+service_years = float(input("Enter your years of service: "))
+
+# Bonus calculate garnu
+if service_years > 10:
+    bonus = 0.10   # 10% bonus
+elif service_years >= 6:
+    bonus = 0.08   # 8% bonus
 else:
-    bonus_percent = 5
+    bonus = 0.05   # 5% bonus
 
-print("Bonus %:", bonus_percent)
+# Print result
+print("Your bonus percentage is:", bonus * 100, "%")
 
 
-# 18. Subject score advice
-sub_score = float(input("Subject score: "))
+# 18. Ask the user for a subject score. If it's above 90, congratulate him. If it's between
+# 50 and 90, suggest improvement. Otherwise, advise on retaking the course.
 
-if sub_score > 90:
-    print("Excellent! Congratulations")
-elif sub_score >= 50:
-    print("Good, but improve")
+# User le subject score halne
+score = float(input("Enter your subject score: "))
+
+# Check score and give advice
+if score > 90:
+    print("Congratulations! Excellent score.")  # 90+ bhaye
+elif score >= 50:
+    print("Good effort, but you should improve.")  # 50–90 bhaye
 else:
-    print("Retake the course")
+    print("You should retake the course.")  # <50 bhaye
+    
 
+# 19. Write a program to determine if a candidate is eligible for a job: If the candidate's
+# age is >= 18, check if they have a degree. If they have a degree, check their work
+# experience: More than 3 years: Display "Highly Eligible." 1-3 years: Display
+# "Eligible." Less than 1 year: Display "Under Review."
 
-# 19. Job eligibility
-age_candidate = int(input("Candidate age: "))
-deg = input("Degree cha? (Yes/No): ").title() == "Yes"
-exp = float(input("Work experience (yrs): "))
+# User le candidate ko age halne
+age = int(input("Enter candidate's age: "))
 
-if age_candidate >= 18:
-    if deg:
-        if exp > 3:
-            print("Highly Eligible")
-        elif exp >= 1:
-            print("Eligible")
+# User le degree cha ki chaina halne (Yes/No)
+has_degree = input("Do you have a degree? (Yes/No): ").title() == "Yes"
+
+# User le work experience halne (years)
+experience = float(input("Enter work experience in years: "))
+
+# Eligibility check
+if age >= 18:
+    if has_degree:
+        if experience > 3:
+            print("Highly Eligible")   # 3+ years experience
+        elif experience >= 1:
+            print("Eligible")          # 1–3 years experience
         else:
-            print("Under Review")
+            print("Under Review")      # <1 year experience
     else:
-        print("Not Eligible")
+        print("Not Eligible")           # degree chaina
 else:
-    print("Not Eligible")
+    print("Not Eligible")               # age <18
+    
+    
+# 20. Accept the age, gender ('M', 'F'), number of days and display the wages
+# accordingly.
+# Age Gender Wage/day
+# >=18 and <30 M 700
+# F 750
+# >=30 and <=40 M 800
+# F 850   
 
 
-# 20. Wages based on age/gender/days
-emp_age = int(input("Age: "))
-emp_gender = input("Gender (M/F): ").upper()
-emp_days = int(input("Days worked: "))
+# User le age, gender, number of days halne
+age = int(input("Enter age: "))
+gender = input("Enter gender (M/F): ").upper()
+days = int(input("Enter number of days worked: "))
 
-if emp_age >= 18 and emp_age < 30:
-    wage_day = 700 if emp_gender == "M" else 750
-elif emp_age >= 30 and emp_age <= 40:
-    wage_day = 800 if emp_gender == "M" else 850
+# Wage per day determine garnu
+if age >= 18 and age < 30:
+    if gender == "M":
+        wage_per_day = 700
+    else:  # gender F
+        wage_per_day = 750
+elif age >= 30 and age <= 40:
+    if gender == "M":
+        wage_per_day = 800
+    else:  # gender F
+        wage_per_day = 850
 else:
-    wage_day = 0
+    wage_per_day = 0  # age criteria match nagare
 
-total_wage = wage_day * emp_days
-if wage_day > 0:
-    print("Total wages Rs", total_wage)
+# Total wages calculate garnu
+total_wages = wage_per_day * days
+
+# Print result
+if wage_per_day > 0:
+    print("Total wages to pay: Rs", total_wages)
 else:
-    print("Age not eligible for wages")
+    print("No wages, age not in valid range") 
+
+#    21. Write a Python program to simulate a simple ATM with the following
+# specifications:
+#  Assume the card is valid (is_valid = True)
+#  Initial account balance is 50000
+#  Correct PIN is 123
+#  After entering correct PIN, display the menu:
+# 1. Withdraw
+# 2. Check Balance
+# 3. Exit
+#  If user selects 1 then ask amount and deduct from balance
+#  If user selects 2 then show current balance
+#  If user selects 3 then print “Thank you for visiting”
+#  Show proper messages for wrong PIN and invalid option Use nested if-else
+# statements only     
 
 
-# 21. Simple ATM
-atm_valid = True
-balance_amt = 50000
-atm_pin = 123
+# Card valid cha bhane
+is_valid = True
 
-if atm_valid:
-    pin_input = int(input("Enter ATM PIN: "))
-    if pin_input == atm_pin:
-        print("1. Withdraw\n2. Check Balance\n3. Exit")
-        opt = int(input("Choose option: "))
-        if opt == 1:
-            amt = float(input("Amount to withdraw: "))
-            if amt <= balance_amt:
-                balance_amt -= amt
-                print("Withdraw success, balance Rs", balance_amt)
+# Initial account balance
+balance = 50000
+
+# Correct PIN
+correct_pin = 123
+
+# User le PIN halne
+if is_valid:
+    pin = int(input("Enter your ATM PIN: "))
+    
+    if pin == correct_pin:
+        # PIN correct, menu display
+        print("ATM Menu:")
+        print("1. Withdraw")
+        print("2. Check Balance")
+        print("3. Exit")
+        
+        option = int(input("Select option (1-3): "))
+        
+        if option == 1:
+            # Withdraw
+            amount = float(input("Enter amount to withdraw: "))
+            if amount <= balance:
+                balance -= amount
+                print("Withdrawal successful. Remaining balance: Rs", balance)
             else:
                 print("Insufficient balance")
-        elif opt == 2:
-            print("Current balance Rs", balance_amt)
-        elif opt == 3:
+        elif option == 2:
+            # Check balance
+            print("Your current balance is: Rs", balance)
+        elif option == 3:
+            # Exit
             print("Thank you for visiting")
         else:
-            print("Invalid option")
+            print("Invalid option selected")
     else:
         print("Wrong PIN")
 else:
-    print("Card invalid")
+    print("Card not valid")
+    
 
+# 22. Create a Python program that greets the user with the message "Welcome to the
+# Magic Forest". Then, ask the user whether they want to go "north" or "south". If
+# they choose "south", print "Game Over". If they choose "north", ask if they want to
+# "cross the river" or "follow the path". If they choose "cross the river", print "Game
+# Over". If they choose "follow the path", ask them to choose between "fairy","ogre",
+# or "elf". If they choose "ogre" or "fairy", print "Game Over". If they choose "elf",
+# print "You Win".    
 
-# 22. Magic Forest Game
+# Welcome message
 print("Welcome to the Magic Forest")
-dir1 = input("Go 'north' or 'south'? ").lower()
 
-if dir1 == "south":
-    print("Game Over")
-elif dir1 == "north":
-    dir2 = input("Cross river or follow path? ").lower()
-    if dir2 == "cross river":
-        print("Game Over")
-    elif dir2 == "follow path":
-        dir3 = input("Choose 'fairy','ogre','elf': ").lower()
-        if dir3 in ["ogre","fairy"]:
-            print("Game Over")
-        elif dir3 == "elf":
-            print("You Win")
+# First choice: north or south
+choice1 = input("Do you want to go 'north' or 'south'? ").lower()
+
+if choice1 == "south":
+    print("Game Over")  # south choose gare game over
+elif choice1 == "north":
+    # Second choice: cross river or follow path
+    choice2 = input("Do you want to 'cross the river' or 'follow the path'? ").lower()
+    
+    if choice2 == "cross the river":
+        print("Game Over")  # river cross gare game over
+    elif choice2 == "follow the path":
+        # Third choice: fairy, ogre, elf
+        choice3 = input("Choose 'fairy', 'ogre', or 'elf': ").lower()
+        
+        if choice3 == "ogre" or choice3 == "fairy":
+            print("Game Over")  # ogre or fairy choose gare game over
+        elif choice3 == "elf":
+            print("You Win")    # elf choose gare win
         else:
             print("Invalid choice, Game Over")
     else:
         print("Invalid choice, Game Over")
 else:
     print("Invalid choice, Game Over")
+    
+    
+#   23. Create a Python program that greets the user with the message "Welcome to the
+# Haunted House". Then, ask the user whether they want to go "upstairs" or
+# "downstairs". If they choose "downstairs", print "Game Over". If they choose
+# "upstairs", ask if they want to "enter the room" or "stay outside". If they choose
+# "enter the room", print "Game Over". If they choose "stay outside", ask them to
+# choose between "ghost", "vampire", or "werewolf". If they choose "ghost" or
+# "vampire", print "Game Over". If they choose "werewolf", print "You Win"  
 
-
-# 23. Haunted House Game
+# Welcome message
 print("Welcome to the Haunted House")
-floor1 = input("Go 'upstairs' or 'downstairs'? ").lower()
 
-if floor1 == "downstairs":
-    print("Game Over")
-elif floor1 == "upstairs":
-    floor2 = input("Enter room or stay outside? ").lower()
-    if floor2 == "enter room":
-        print("Game Over")
-    elif floor2 == "stay outside":
-        floor3 = input("Choose 'ghost','vampire','werewolf': ").lower()
-        if floor3 in ["ghost","vampire"]:
-            print("Game Over")
-        elif floor3 == "werewolf":
-            print("You Win")
+# First choice: upstairs or downstairs
+choice1 = input("Do you want to go 'upstairs' or 'downstairs'? ").lower()
+
+if choice1 == "downstairs":
+    print("Game Over")  # downstairs choose gare game over
+elif choice1 == "upstairs":
+    # Second choice: enter room or stay outside
+    choice2 = input("Do you want to 'enter the room' or 'stay outside'? ").lower()
+    
+    if choice2 == "enter the room":
+        print("Game Over")  # enter room gare game over
+    elif choice2 == "stay outside":
+        # Third choice: ghost, vampire, werewolf
+        choice3 = input("Choose 'ghost', 'vampire', or 'werewolf': ").lower()
+        
+        if choice3 == "ghost" or choice3 == "vampire":
+            print("Game Over")  # ghost or vampire choose gare game over
+        elif choice3 == "werewolf":
+            print("You Win")    # werewolf choose gare win
         else:
             print("Invalid choice, Game Over")
     else:
